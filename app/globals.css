@@ -7,3 +7,22 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
+
+td{
+  @apply p-2;
+}
+.status{
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
+  color: white;
+}
+.done{
+  background-color: rgb(63, 232, 63);
+}
+.pending{
+  background-color: rgb(173, 125, 34);
+}
+.cancelled{
+  background-color: rgb(182, 32, 32);
+}

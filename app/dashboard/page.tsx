@@ -7,7 +7,7 @@ const page = () => {
   return (
     <section className='flex gap-2'>
       <main className='flex-[3]'>
-        <div className='flex justify-between gap-2 '>
+        <div className='flex justify-between gap-[10px] '>
           <Card />
           <Card />
           <Card />
