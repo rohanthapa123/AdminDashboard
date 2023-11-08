@@ -80,7 +80,7 @@ type Props = {}
 
 const Sidebar = (props: Props) => {
   return (
-    <aside className=' sticky'>
+    <aside className=' sticky  top-[40px]'>
         <div className='flex gap-4 items-center m-2 md:m-1 '>
             <Image className=' rounded-full' src="/noavatar.jpg" width={"50"} height={"50"} alt="" />
             <div className='text-sm flex flex-col'>
@@ -93,7 +93,7 @@ const Sidebar = (props: Props) => {
                 return <ul key={item.title} className='mt-6'>
                     <li className='text-sm text-gray-200 '>{item.title}</li>
                     {
-                        item.list.map(list => <MenuItems list={list}/>)
+                        item.list.map(list => <MenuItems key={list.title} list={list}/>)
                     }
                 </ul>
             })

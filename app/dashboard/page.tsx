@@ -2,6 +2,7 @@ import React from 'react'
 import Card from '../components/dashboard/Card/Card'
 import Transactions from '../components/dashboard/Transactions/Transactions'
 import Chart from '../components/dashboard/Chart/Chart'
+import Rightbar from '../components/dashboard/Rightbar/Rightbar'
 
 const page = () => {
   return (
@@ -16,7 +17,7 @@ const page = () => {
         <Chart />
       </main>
       <aside className='flex-1'>
-        side
+        <Rightbar />
       </aside>
     </section>
   )

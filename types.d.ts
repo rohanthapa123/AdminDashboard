@@ -6,3 +6,10 @@ type menuitem = {
         icon: React.JSX.Element,
     }[]
 }[]
+
+type dataItem = {
+    name: string,
+    visit: number,
+    sell: number,
+    amt: number
+}
