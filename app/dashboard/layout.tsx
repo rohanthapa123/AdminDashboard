@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../components/dashboard/Navbar/Navbar'
 import Sidebar from '../components/dashboard/Sidebar/Sidebar'
+import Footer from '../components/dashboard/Footer/Footer'
 
  const RootLayout = ({children}:{children: React.ReactNode}) => {
   return (
@@ -11,6 +12,7 @@ import Sidebar from '../components/dashboard/Sidebar/Sidebar'
         <div className=' flex-[4] p-4'>
         <Navbar />
         {children}
+        <Footer />
         </div>
     </div>
   )

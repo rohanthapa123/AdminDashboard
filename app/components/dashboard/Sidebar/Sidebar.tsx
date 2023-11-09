@@ -80,7 +80,7 @@ type Props = {}
 
 const Sidebar = (props: Props) => {
   return (
-    <aside className=' sticky  top-[40px]'>
+    <aside className=' sticky  top-[40px] min-h-screen'>
         <div className='flex gap-4 items-center m-2 md:m-1 '>
             <Image className=' rounded-full' src="/noavatar.jpg" width={"50"} height={"50"} alt="" />
             <div className='text-sm flex flex-col'>

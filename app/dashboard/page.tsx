@@ -16,7 +16,7 @@ const page = () => {
         <Transactions />
         <Chart />
       </main>
-      <aside className='flex-1'>
+      <aside className='flex-1 '>
         <Rightbar />
       </aside>
     </section>

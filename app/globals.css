@@ -26,3 +26,7 @@ td{
 .cancelled{
   background-color: rgb(182, 32, 32);
 }
+
+.inputBox{
+  @apply p-4 bg-slate-900 border-none outline-none focus:outline-none rounded-md text-sm focus:bg-slate-900 autofill:bg-slate-900
+}
