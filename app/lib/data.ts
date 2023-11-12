@@ -1,4 +1,5 @@
-import { getProductModel, getUserModel, initProductModel, initUserModel } from "./models";
+import { getProductModel, initProductModel } from "./product.models";
+import { getUserModel, initUserModel } from "./user.model";
 import connectToDB from "./utils";
 
 export const fetchUsers = async () =>{

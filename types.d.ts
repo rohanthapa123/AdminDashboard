@@ -13,3 +13,15 @@ type dataItem = {
     sell: number,
     amt: number
 }
+
+// type user = {
+//   username  :String,   
+//   email     :String,   
+//   password  :String,   
+//   img       :String | null,
+//   isAdmin   :String, 
+//   isActive  :String, 
+//   phones    :String | null,
+//   address   :String | null, 
+//   createdAt :DateTime 
+// }

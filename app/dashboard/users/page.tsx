@@ -1,6 +1,5 @@
 import Pagination from '@/app/components/dashboard/Pagination/Pagination'
 import Search from '@/app/components/dashboard/Search/Search'
-import { fetchUsers } from '@/app/lib/data'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -8,8 +7,7 @@ import React from 'react'
 type Props = {}
 
 const page = async (props: Props) => {
-  const users = await fetchUsers();
-  console.log(users);
+  
   return (
     <div className='bg-slate-800 mt-4 p-4 rounded-lg'>
       <div className=''>
