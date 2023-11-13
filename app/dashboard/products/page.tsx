@@ -1,13 +1,36 @@
+import { DELETE } from '@/app/api/products/[id]/route'
 import Pagination from '@/app/components/dashboard/Pagination/Pagination'
 import Search from '@/app/components/dashboard/Search/Search'
+import { Product } from '@prisma/client'
+import { revalidatePath } from 'next/cache'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 
-type Props = {}
+type Props = {
+  searchParams:{
+    q: string | " "
+  }
+}
 
-const page =  async (props: Props) => {
+const page = async ({searchParams}: Props) => {
   
+  // console.log(searchParams)
+  const q = searchParams?.q || " ";
+  // console.log(q)
+  let resp = await fetch(`http://localhost:3000/api/products?q=${q}`,{cache: 'no-store'});
+  const data = await resp.json();
+  // console.log(data)
+
+  const handleDelete = async (formData: FormData) =>{
+    'use server'
+    const {id} = Object.fromEntries(formData);
+    console.log(id)
+    let resp = await fetch(`http://localhost:3000/api/products/${id}`,{method: "DELETE"})
+    if(resp)
+      revalidatePath("/dashboard/products")
+  }
+
   return (
     <div className='bg-slate-800 mt-4 p-4 rounded-lg'>
       <div >
@@ -25,22 +48,32 @@ const page =  async (props: Props) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div className='flex item-center gap-2'>
-                <Image className=' object-cover rounded-full' src="/noavatar.jpg" height={"25"} width={"25"} alt='' />
-                Rice
-              </div>
-            </td>
-            <td className=' truncate max-w-[40px] '>Its tasty as hell . so what  hus do you think of it asdlkjaslkfj salfj aslkjfasl fjls</td>
-            <td>$21</td>
-            <td>2080.07.25</td>
-            <td>70</td>
-            <td className=''>
-                <Link href={"/dashboard/products/a1b3rohanpro"}> <button className='bg-green-600 px-2 py-1 rounded-md text-sm'>View</button></Link>
-                <Link href={"/"}> <button className='ms-1 bg-red-600 px-2 py-1 rounded-md text-sm'>Delete</button></Link>
-            </td>
-          </tr>
+          {
+            data.products?.map((product: Product) => {
+              return <tr key={product.id}>
+                <td>
+                  <div className='flex item-center gap-2'>
+                    <Image className=' object-cover rounded-full' src="/noavatar.jpg" height={"25"} width={"25"} alt='' />
+                    {product.title}
+                  </div>
+                </td>
+                <td className=' truncate max-w-[40px] '>{product.description}</td>
+                <td>$ {product.price}</td>
+                <td>{product.createdAt.toString().slice(0, 10)}</td>
+                <td>{product.stock}</td>
+                <td className='flex'>
+                  
+                  <Link href={`/dashboard/products/${product.id}`}>
+                      <button className='bg-green-600 px-2 py-1 rounded-md text-sm'>View</button>
+                  </Link>
+                    <form action={handleDelete}>
+                      <input type="hidden" name='id' value={product.id} />
+                      <button className='ms-1 bg-red-600 px-2 py-1 rounded-md text-sm'>Delete</button>
+                    </form>
+                </td>
+              </tr>
+            })
+          }
         </tbody>
       </table>
       <Pagination />
