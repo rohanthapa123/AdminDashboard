@@ -32,3 +32,17 @@ model Product {
     size        String?
     createdAt   DateTime @default(now())
 }
+
+model Transaction{
+    id String @id @default(auto()) @map("_id") @db.ObjectId
+    name String
+    status Status @default(pending)
+    date DateTime @default(now())
+    amount Int
+}
+
+enum Status {
+    pending
+    done
+    cancelled
+}

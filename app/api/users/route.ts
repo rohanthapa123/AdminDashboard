@@ -1,8 +1,9 @@
 import { connectToDB } from "@/utils"
 import prisma  from "@/prisma";
 import { NextResponse } from "next/server";
+import { NextApiRequest } from "next";
 
-export const GET =async (req:Request) => {
+export const GET =async (req:NextApiRequest) => {
     try {
         await connectToDB();
         const users = await prisma.user.findMany();
@@ -15,3 +16,5 @@ export const GET =async (req:Request) => {
         await prisma.$disconnect();
     }
 }
+
+

@@ -18,7 +18,7 @@ const page = (props: Props) => {
             size: size,
             description: description,
         }
-        console.log(dataToAdd)
+        // console.log(dataToAdd)
         const jsonString = JSON.stringify(dataToAdd);
         const option = {
             method: 'POST',

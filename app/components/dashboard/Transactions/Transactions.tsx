@@ -8,10 +8,10 @@ const Transactions = () => {
       <h3 className='font-light text-lg text-gray-200'>Latest Transactions</h3>
       <table className='w-full'>
         <thead>
-          <tr>
+          <tr className=' text-left'>
+            <th>Name</th>
             <th>Status</th>
             <th>Date</th>
-            <th>Name</th>
             <th>Amount</th>
           </tr>
         </thead>
